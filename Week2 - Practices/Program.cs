@@ -28,8 +28,8 @@ Console.WriteLine($"string : {text}   integer: {num}");
 
 
 Random rnd = new Random();
-int rndnum = rnd.Next(100);
-Console.WriteLine($"Rastgele üretilen sayı : {rndnum}");
+int rndNum = rnd.Next(100);
+Console.WriteLine($"Rastgele üretilen sayı : {rndNum}");
 
 
 
@@ -154,14 +154,14 @@ static int MaxAgeCalc(int age1, int age2, int age3)
 Console.WriteLine("Lütfen bir sayı giriniz.");
 int z = 0;
 int k = 0;
-while (z < 1)
+while (z < 1)      // Burada 0 değerinde bir z değişkeni oluşturdum. Daha sonra z hiçbir zaman 1 den büyük olamaycağı için döngü sonsuz olacak.
 {
-    int inputNumber = Convert.ToInt32(Console.ReadLine());
+    int inputNumber = Convert.ToInt32(Console.ReadLine());  // Sonsuz döngüde kullanıcdan sınırsız giriş alabileceğiz.
     int maxNumber = MaxNumberCalc(inputNumber);
     Console.WriteLine($"En yüksek sayı : {maxNumber}");
 }
 
-int MaxNumberCalc(int a)
+int MaxNumberCalc(int a)  // Bu satırda da en büyük sayıyı belirleyecek metot oluşturuldu.
 {
     if (k < a)
     {
@@ -217,8 +217,8 @@ bool EvenOdd(int a)
 Console.WriteLine("Lütfen önce hız daha sonra da zaman bilgisini giriniz.");
 int speed = Convert.ToInt32(Console.ReadLine());
 int time = Convert.ToInt32(Console.ReadLine());
-int resultdistance = DistanceCalc(speed, time);
-Console.WriteLine($"Verdiğiniz bilgilere göre gidilen yol : {resultdistance}");
+int resultDistance = DistanceCalc(speed, time);
+Console.WriteLine($"Verdiğiniz bilgilere göre gidilen yol : {resultDistance}");
 
 int DistanceCalc(int speed, int time)
 {
@@ -231,8 +231,8 @@ int DistanceCalc(int speed, int time)
 int r = 3;
 double pi = 3.14;
 
-double arearesult = AreaCalc(r, pi);
-Console.WriteLine($"Değerleri verilen dairenin alanı : {arearesult}");
+double areaResult = AreaCalc(r, pi);
+Console.WriteLine($"Değerleri verilen dairenin alanı : {areaResult}");
 
 double AreaCalc(int r, double pi)
 {
@@ -253,5 +253,5 @@ Console.WriteLine($"Girilen ifadenin büyük harfli hali : {stringUpper}");
 //18 - "    Selamlar   " metnini bir değişkene atayıp , başındaki ve sonundaki boşlukları siliniz. Kalıcı olarak.
 
 string greeting = "    Selamlar   ";
-string blanklessgreeting = greeting.Trim();
-Console.WriteLine($"İfadenin yeni hali : {blanklessgreeting}");
+string blanklessGreeting = greeting.Trim();
+Console.WriteLine($"İfadenin yeni hali : {blanklessGreeting}");

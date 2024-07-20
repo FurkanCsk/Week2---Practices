@@ -8,6 +8,7 @@
 //Sen nasılsın ?
 
 
+using System.Security.Cryptography;
 using System.Threading.Channels;
 
 Console.WriteLine("Merhaba\nNasılsın ?\nİyiyim\nSen nasılsın ?");
@@ -149,26 +150,43 @@ static int MaxAgeCalc(int age1, int age2, int age3)
 
 
 //12 - Kullanıcıdan sınırsız sayıda sayı alıp , bunlardan en büyüğünü ekrana yazdıran ve aynı zamanda geriye dönen bir metot yazınız.
+int maxNumber = 0;
+Console.WriteLine("Lütfen bir sayı giriniz. Sayı girişini sonlandırmak için 'q' tuşuna basınız.");
 
-
-Console.WriteLine("Lütfen bir sayı giriniz.");
-int z = 0;
-int k = 0;
-while (z < 1)      // Burada 0 değerinde bir z değişkeni oluşturdum. Daha sonra z hiçbir zaman 1 den büyük olamaycağı için döngü sonsuz olacak.
+while (true)
 {
-    int inputNumber = Convert.ToInt32(Console.ReadLine());  // Sonsuz döngüde kullanıcdan sınırsız giriş alabileceğiz.
-    int maxNumber = MaxNumberCalc(inputNumber);
-    Console.WriteLine($"En yüksek sayı : {maxNumber}");
-}
+    string input12 = Console.ReadLine();
 
-int MaxNumberCalc(int a)  // Bu satırda da en büyük sayıyı belirleyecek metot oluşturuldu.
-{
-    if (k < a)
+    if (input12.ToLower() == "q")    // Burada programı sonlandırmak için bir if bloğu eklendi. Kullanıcı q girişi yaparsa program sonlanır.
     {
-        k = a;
+        break;
     }
-    return k;
+    if (int.TryParse(input12, out int number))
+    {
+        maxNumber = MaxNumberCalc(maxNumber, number);
+        Console.WriteLine($"Şu ana kadar girilen en yüksek sayı : {maxNumber}");
+    }
+    else
+    {
+        Console.WriteLine("Lütfen geçerli bir sayı giriniz.");
+    }
 }
+
+Console.WriteLine($"En yüksek sayı : {maxNumber}");
+
+static int MaxNumberCalc(int currentMaxNum, int newNum)  // Max girişin belirlendiği metot.
+{
+    if (newNum > currentMaxNum)
+    {
+        return newNum;
+    }
+    else
+    {
+        return currentMaxNum;
+    }
+}
+
+
 //13- Bir metot yardımıyla kullanıcıdan alınan 2 ismin yerlerini değiştiren uygulamayı yazınız.
 
 
